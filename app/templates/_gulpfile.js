@@ -19,6 +19,9 @@ var source = require('vinyl-source-stream'),
 <% } %>
     destFolder = './dist/scripts',
     destFileName = 'app.js';
+<% if (includeLess) { %>
+  var less = require('gulp-less');  
+  <%} %>
 
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -32,16 +35,16 @@ gulp.task('moveCss',['clean'], function(){
   gulp.src(['./app/styles/**/*.css'], { base: './app/styles/' })
   .pipe(gulp.dest('dist/styles'));
 });
-<% if (includeSass) { %>
-gulp.task('sass', function() {
-    return $.rubySass('./app/styles', {
-            style: 'expanded',
-            precision: 10<% if (includeBootstrap || includejQuery || includeModernizr) { %>,
-            loadPath: ['app/bower_components']<% } %>
-        })
-        .pipe($.autoprefixer('last 1 version'))
-        .pipe(gulp.dest('dist/styles'))
-        .pipe($.size());
+<% if (includeLess) { %>
+gulp.task('less', function() {
+  return gulp.src('./app/styles/*.less')
+              .pipe(less({
+              paths: [
+              '.',
+              './node_modules/bootstrap-less'
+              ]
+              }))
+.pipe(gulp.dest('dist/styles'));
 });
 <% } %>
 <% if (includeStylus) { %>
