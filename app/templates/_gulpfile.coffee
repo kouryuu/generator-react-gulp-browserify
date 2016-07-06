@@ -170,7 +170,7 @@ gulp.task "watch", [
 
   gulp.watch "app/*.html", [ "html" ]
   gulp.watch [
-    "app/styles/**/*.scss"
+    "app/styles/**/*.less"
     "app/styles/**/*.css"
     "app/styles/*.styl"
   ], [
