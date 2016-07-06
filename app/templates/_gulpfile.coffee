@@ -43,6 +43,11 @@ gulp.task "less", ->
               }))
       .pipe(gulp.dest('dist/styles'))
 
+<% } if (includeStylus) { %>
+
+gulp.task "stylus", ->
+  gulp.src([ "app/styles/**/*.styl" ]).pipe($.stylus()).pipe($.autoprefixer("last 1 version")).pipe(gulp.dest("dist/styles")).pipe $.size()
+
 <% } %>
 
 bundler = watchify(browserify(
@@ -165,7 +170,7 @@ gulp.task "watch", [
 
   gulp.watch "app/*.html", [ "html" ]
   gulp.watch [
-    "app/styles/**/*.scss"
+    "app/styles/**/*.less"
     "app/styles/**/*.css"
     "app/styles/*.styl"
   ], [

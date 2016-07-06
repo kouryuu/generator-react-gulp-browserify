@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "dependencies": {<% if (includeBootstrap || includejQuery) { %>
     "jquery": "~2.1.1"<% if (includeBootstrap || includeModernizr) { %>,<% } } if (includeBootstrap && (!includeLess && !includeStylus)) { %>
-    "bootstrap": ">=3.3.5"<% if (includeModernizr) { %>,<% } } if (includeModernizr) { %>,<% } } if (includeBootstrap && includeStylus) { %>
+    "bootstrap": ">=3.3.5"<% if (includeModernizr) { %>,<% } }  if (includeBootstrap && includeStylus) { %>
     "bootstrap-stylus": ">=4.0.5"<% if (includeModernizr) { %>,<% } } if (includeModernizr) { %>
     "modernizr": "^2.8.3"<% } %>
   }
