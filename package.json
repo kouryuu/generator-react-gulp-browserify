@@ -27,7 +27,8 @@
     "yeoman-generator",
     "react",
     "browserify",
-    "gulp"
+    "gulp",
+    "less"
   ],
   "dependencies": {
     "yeoman-generator": "~0.16.0",
