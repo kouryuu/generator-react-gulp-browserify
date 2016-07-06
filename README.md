@@ -1,9 +1,9 @@
 # generator-react-gulp-browserify-less
-
+_This is a Fork of [generator-react-gulp-browserify](andylien/generator-react-gulp-browserify) replacing SASS with LESS_
 > [Yeoman](http://yeoman.io) generator for facebook's React library - Integrate with gulp and browserify.
 
 
-* This is Fork of [generator-react-gulp-browserify](andylien/generator-react-gulp-browserify) *
+
 
 
 
