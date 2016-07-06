@@ -1,12 +1,10 @@
-# generator-react-gulp-browserify [![Build Status](https://secure.travis-ci.org/randylien/generator-react-gulp-browserify.png?branch=master)](https://travis-ci.org/randylien/generator-react-gulp-browserify)
+# generator-react-gulp-browserify-less
 
 > [Yeoman](http://yeoman.io) generator for facebook's React library - Integrate with gulp and browserify.
 
-## What's new?
 
-* Added watchify support
-* We use browserify extension instead of gulp extension
-* Autorun `bower install` & `npm install` by default
+* This is Fork of [generator-react-gulp-browserify](andylien/generator-react-gulp-browserify) *
+
 
 
 ## What's inside?
@@ -23,7 +21,7 @@ Bundled:
 
 Optional:
 
-* Sass with Compass
+* Less
 * Bootstrap - Twitter Bootstrap's official Sass version
 * Modernizr
 * Jade for HTML templates (I think jade is no longer necessary if we create UI with JavaScript)
@@ -33,7 +31,6 @@ Optional:
 ## Environment requirements
 
 * node.js 0.12 (I suggest to use [nvm](https://github.com/creationix/nvm) to manage your node environment.)
-* Sass >= 3.4 if you want to use Sass
 
 
 ## Getting Started
