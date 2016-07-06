@@ -146,7 +146,7 @@ describe('react-gulp-browserify generator with sass', function () {
         'app/index.html',
         'app/scripts/ui/Timer.js',
         'app/scripts/app.js',
-        'app/styles/main.scss'
+        'app/styles/main.less'
     ];
 
 
@@ -354,7 +354,7 @@ describe('react-gulp-browserify generator with jade, modernizr, bootstrap, less,
         'app/template/index.jade',
         'app/scripts/ui/Timer.coffee',
         'app/scripts/app.coffee',
-        'app/styles/main.scss'
+        'app/styles/main.less'
     ];
 
 
