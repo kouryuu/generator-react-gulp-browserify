@@ -23,7 +23,7 @@ var ReactGulpBrowserifyGenerator = yeoman.generators.Base.extend({
         console.log(this.yeoman);
 
         // replace it with a short and sweet description of your generator
-        console.log(chalk.magenta('You\'re using the fantastic React generator. We provide you full JavaScript solution with Sass or Stylus support!'));
+        console.log(chalk.magenta('You\'re using the fantastic React generator. We provide you full JavaScript solution with Less or Stylus support!'));
 
         var prompts = [{
             name: 'project',
@@ -34,8 +34,8 @@ var ReactGulpBrowserifyGenerator = yeoman.generators.Base.extend({
             name: 'features',
             message: 'What more would you like?',
             choices: [{
-                name: 'Sass with Compass',
-                value: 'includeSass',
+                name: 'LESS',
+                value: 'includeLess',
                 checked: true
             }, {
                 name: 'Stylus',
@@ -77,7 +77,7 @@ var ReactGulpBrowserifyGenerator = yeoman.generators.Base.extend({
 
             // manually deal with the response, get back and store the results.
             // we change a bit this way of doing to automatically do this in the self.prompt() method.
-            this.includeSass = hasFeature('includeSass');
+            this.includeLess = hasFeature('includeLess');
             this.includeStylus = hasFeature('includeStylus');
             this.includejQuery = hasFeature('includejQuery');
             this.includeBootstrap = hasFeature('includeBootstrap');
@@ -110,8 +110,8 @@ var ReactGulpBrowserifyGenerator = yeoman.generators.Base.extend({
             this.template('_gulpfile.js', 'gulpfile.js');
         }
 
-        if (this.includeSass) {
-            this.template('main.scss', 'app/styles/main.scss');
+        if (this.includeLess) {
+            this.template('main.less', 'app/styles/main.less');
         } else if (this.includeStylus) {
             this.template('main.styl', 'app/styles/main.styl');
         } else {
