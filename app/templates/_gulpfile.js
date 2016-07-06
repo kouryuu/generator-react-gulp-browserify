@@ -20,14 +20,14 @@ var source = require('vinyl-source-stream'),
     destFolder = './dist/scripts',
     destFileName = 'app.js';
 <% if (includeLess) { %>
-  var less = require('gulp-less');  
+  var less = require('gulp-less');
   <%} %>
 
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
 // Styles
-gulp.task('styles', [<% if (includeSass) { %>'sass', <% } %>'moveCss'<% if (includeStylus) { %>, 'stylus' <% } %>]);
+gulp.task('styles', [<% if (includeLess) { %>'less', <% } %>'moveCss'<% if (includeStylus) { %>, 'stylus' <% } %>]);
 
 gulp.task('moveCss',['clean'], function(){
   // the base option sets the relative root for the set of files,

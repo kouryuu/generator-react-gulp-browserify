@@ -152,7 +152,7 @@ describe('react-gulp-browserify generator with sass', function () {
 
     helpers.mockPrompt(this.app, {
         features: [
-            'includeSass'
+            'includeLess'
         ]
     });
     this.app.options['skip-install'] = true;
@@ -329,7 +329,7 @@ describe('react-gulp-browserify generator with coffeescript', function () {
   });
 });
 
-describe('react-gulp-browserify generator with jade, modernizr, bootstrap, sass, and coffeescript', function () {
+describe('react-gulp-browserify generator with jade, modernizr, bootstrap, less, and coffeescript', function () {
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
@@ -360,7 +360,7 @@ describe('react-gulp-browserify generator with jade, modernizr, bootstrap, sass,
 
     helpers.mockPrompt(this.app, {
         features: [
-            'includeSass',
+            'includeLess',
             'includeBootstrap',
             'includeModernizr',
             'includeJade',

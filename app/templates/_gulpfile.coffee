@@ -22,7 +22,7 @@ reload = browserSync.reload
 # Styles
 
 gulp.task "styles", [
- <% if (includeSass) { %> "sass"<% } %>
+ <% if (includeLess) { %> "less"<% } %>
  <% if (includeStylus) { %> "stylus"<% } %>
   "moveCss"
 ]
@@ -32,16 +32,16 @@ gulp.task "moveCss", [ "clean" ], ->
   # preserving the folder structure
   gulp.src([ "./app/styles/**/*.css" ], base: "./app/styles/").pipe gulp.dest("dist/styles")
 
-<% if (includeSass) { %>
-gulp.task "sass", ->
-  $.rubySass("./app/styles",
-    style: "expanded"
-    precision: 10
-    <% if (includeBootstrap || includejQuery || includeModernizr) { %>loadPath: [ "app/bower_components" ]).pipe($.autoprefixer("last 1 version")).pipe(gulp.dest("dist/styles")).pipe $.size()<% } %>
-<% } if (includeStylus) { %>
-
-gulp.task "stylus", ->
-  gulp.src([ "app/styles/**/*.styl" ]).pipe($.stylus()).pipe($.autoprefixer("last 1 version")).pipe(gulp.dest("dist/styles")).pipe $.size()
+<% if (includeLess) { %>
+gulp.task "less", ->
+  gulp.src('./app/styles/*.less')
+              .pipe(less({
+              paths: [
+              '.',
+              './node_modules/bootstrap-less'
+              ]
+              }))
+      .pipe(gulp.dest('dist/styles'))
 
 <% } %>
 
@@ -156,13 +156,13 @@ gulp.task "watch", [
       "dist"
       "app"
     ]
-  
+
   # Watch .json files
-  
+
   gulp.watch "app/scripts/**/*.json", [ "json" ]
-  
+
   # Watch .html files
-  
+
   gulp.watch "app/*.html", [ "html" ]
   gulp.watch [
     "app/styles/**/*.scss"

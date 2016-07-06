@@ -44,8 +44,8 @@
                     <h4>HTML5 Boilerplate</h4>
                     <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
 
-                    <% if (includeSass) { %><h4>Sass with Compass</h4>
-                    <p>Compass is an open-source CSS Authoring Framework that uses Sass.</p>
+                    <% if (includeLess) { %><h4>LESS</h4>
+                    <p>Less is a CSS pre-processor, meaning that it extends the CSS language.</p>
                     <% } %>
 
                     <% if (includeStylus) { %><h4>Stylus</h4>
@@ -81,7 +81,7 @@
           <p>You now have</p>
           <ul>
             <li>HTML5 Boilerplate</li>
-            <% if (includeSass) { %><li>Sass with Compass</li><% } %>
+            <% if (includeLess) { %><li>LESS</li><% } %>
             <% if (includeStylus) { %><li>Stylus</li><% } %>
             <% if (includeModernizr) { %><li>Modernizr</li><% } %>
             <% if (includejQuery) { %><li>jQuery</li><% } %>
@@ -93,9 +93,8 @@
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <% if (includeBootstrap || includejQuery) { %><script src="bower_components/jquery/dist/jquery.js"></script><% } %>
-        <% if (includeBootstrap && (!includeSass && !includeStylus)) { %>
+        <% if (includeBootstrap && (!includeLess && !includeStylus)) { %>
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script><% } %>
-        <% if (includeSass && includeBootstrap) { %><script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js"></script><% } %>
         <% if (includeStylus && includeBootstrap) { %><script src="bower_components/bootstrap-stylus/js/transition.js"></script>
         <script src="bower_components/bootstrap-stylus/js/alert.js"></script>
         <script src="bower_components/bootstrap-stylus/js/button.js"></script>

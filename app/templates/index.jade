@@ -43,8 +43,8 @@ html(lang="en")
           h4 HTML5 Boilerplate
           p
             | HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-          <% if (includeSass) { %>h4 Sass with Compass
-          p Compass is an open-source CSS Authoring Framework that uses Sass.<% } %>
+          <% if (includeLess) { %>h4 LESS
+          p Less is a CSS pre-processor, meaning that it extends the CSS language.<% } %>
           <% if (includeStylus) { %>h4 Stylus
           p Expressive, dynamic, robust CSS<% } %>
           <% if (includeCoffeeScript) { %>h4 CoffeeScript
@@ -66,7 +66,7 @@ html(lang="en")
       p You now have
       ul
         li HTML5 Boilerplate
-        <% if (includeSass) { %>li Sass with Compass<% } %>
+        <% if (includeLess) { %>li LESS<% } %>
         <% if (includeStylus) { %>li Stylus<% } %>
         <% if (includeModernizr) { %>li Modernizr<% } %>
         <% if (includejQuery) { %>li jQuery<% } %>
@@ -75,8 +75,7 @@ html(lang="en")
     // build:js scripts/vendor.js
     // bower:js
     <% if (includeBootstrap || includejQuery) { %>script(src='bower_components/jquery/dist/jquery.js')<% } %>
-    <% if (includeBootstrap && (!includeSass && !includeStylus)) { %>script(src='bower_components/bootstrap/dist/js/bootstrap.min.js')<% } %>
-    <% if (includeSass && includeBootstrap) { %>script(src='bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js')<% } %>
+    <% if (includeBootstrap && (!includeLess && !includeStylus)) { %>script(src='bower_components/bootstrap/dist/js/bootstrap.min.js')<% } %>
     <% if (includeStylus && includeBootstrap) { %>script(src='bower_components/bootstrap-stylus/js/transition.js')
     script(src='bower_components/bootstrap-stylus/js/alert.js')
     script(src='bower_components/bootstrap-stylus/js/button.js')
