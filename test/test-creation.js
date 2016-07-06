@@ -370,8 +370,6 @@ describe('react-gulp-browserify generator with jade, modernizr, bootstrap, less,
     this.app.options['skip-install'] = true;
     this.app.run({}, function () {
       helpers.assertFile(expected);
-      helpers.assertFileContent('bower.json', /bootstrap/);
-      helpers.assertFileContent('bower.json', /sass/);
       helpers.assertFileContent('bower.json', /modernizr/);
       helpers.assertFileContent('bower.json', /jquery/);
       done();
