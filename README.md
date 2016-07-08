@@ -3,7 +3,11 @@ _This is a Fork of [generator-react-gulp-browserify](https://github.com/randylie
 > [Yeoman](http://yeoman.io) generator for facebook's React library - Integrate with gulp and browserify.
 
 
+### Changelog
 
+* v0.0.43
+  - Added Babelify for ES2015 support
+  - Added source maps for javascript assets.
 
 
 
@@ -27,6 +31,7 @@ Optional:
 * Jade for HTML templates (I think jade is no longer necessary if we create UI with JavaScript)
 * CoffeeScript for JavaScript
 * Jest for unit tests
+* Babelify and source maps.
 
 ## Environment requirements
 
@@ -44,7 +49,7 @@ $ yo react-gulp-browserify                         # ...and run it.
 If you chose to use sass, you'll need to install it with `gem install sass`.
 If you find your css build results are empty, update your sass gem.
 
-## Output folders 
+## Output folders
 
 scripts - /scripts  
 styles - /styles  
