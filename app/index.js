@@ -23,7 +23,7 @@ var ReactGulpBrowserifyGenerator = yeoman.generators.Base.extend({
         console.log(this.yeoman);
 
         // replace it with a short and sweet description of your generator
-        console.log(chalk.magenta('You\'re using the fantastic React generator. We provide you full JavaScript solution with Less or Stylus support!'));
+        console.log(chalk.magenta('You\'re using the fantastic React generator with ES2015 support! We provide you full JavaScript solution with Less or Stylus support!'));
 
         var prompts = [{
             name: 'project',
@@ -65,6 +65,10 @@ var ReactGulpBrowserifyGenerator = yeoman.generators.Base.extend({
                 name: 'Jest for unit tests',
                 value: 'includeJest',
                 checked: true
+            },{
+              name: 'Babel for ES2015 support',
+              value: 'includeBabel',
+              checked: true
             }]
         }];
 
@@ -85,6 +89,7 @@ var ReactGulpBrowserifyGenerator = yeoman.generators.Base.extend({
             this.includeJade = hasFeature('includeJade');
             this.includeCoffeeScript = hasFeature('includeCoffeeScript');
             this.includeJest = hasFeature('includeJest');
+            this.includeBabel = hasFeature('includeBabel');
 
             done();
         }.bind(this));
@@ -134,6 +139,9 @@ var ReactGulpBrowserifyGenerator = yeoman.generators.Base.extend({
 
         if (this.includeJest) {
             this.copy('ui/__tests__/Timer-test.js', 'app/scripts/ui/__tests__/Timer-test.js');
+        }
+        if (this.includeBabel){
+          this.copy('_babelrc', '.babelrc');
         }
         this.copy('favicon.ico', 'app/favicon.ico');
         this.copy('bowerrc', '.bowerrc');

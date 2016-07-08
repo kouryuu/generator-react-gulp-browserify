@@ -1,7 +1,7 @@
 {
   "name": "generator-react-gulp-browserify-less",
-  "version": "0.0.42",
-  "description": "A Yeoman Generator for facebook's React framework. It includes gulp, browserify, livereload and famous official Twitter bootstrap LESS version.",
+  "version": "0.0.43",
+  "description": "A Yeoman Generator for facebook's React framework. It includes gulp, browserify,babel,source maps, livereload and famous official Twitter bootstrap LESS version.",
   "license": "MIT",
   "main": "app/index.js",
   "repository": {
@@ -28,7 +28,9 @@
     "react",
     "browserify",
     "gulp",
-    "less"
+    "less",
+    "babel",
+    "exorcist"
   ],
   "dependencies": {
     "yeoman-generator": "~0.16.0",

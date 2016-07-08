@@ -21,7 +21,13 @@ var source = require('vinyl-source-stream'),
     destFileName = 'app.js';
 <% if (includeLess) { %>
   var less = require('gulp-less');
-  <%} %>
+  <% } %>
+<% if (includeBabel) { %>
+  var babelify = require('babelify');
+  var exorcist = require('exorcist');
+  var buffer = require('vinyl-buffer');
+  var transform = require('vinyl-transform');
+  <% } %>
 
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -67,31 +73,59 @@ var bundler = watchify(browserify({
     packageCache: {},
     fullPaths: true
 }));
-
+<% if(includeBabel) { %>
+  bundler.transform(babelify.configure({
+  sourceMapRelative: 'src'
+}));
+<%  } %>
 bundler.on('update', rebundle);
 bundler.on('log', $.util.log);
-
+<% if(includeBabel) { %>
 function rebundle() {
+  function rebundle() {
+      return bundler.bundle()
+          // log errors if they happen
+          .on('error', $.util.log.bind($.util, 'Browserify Error'))
+          .pipe(exorcist(mapFileName))
+          .pipe(source(destFileName))
+          .pipe(buffer())
+          .pipe(gulp.dest(destFolder))
+          .on('end', function() {
+              reload();
+          });
+  }
+  function bundle(){
     return bundler.bundle()
-        // log errors if they happen
-        .on('error', $.util.log.bind($.util, 'Browserify Error'))
-        .pipe(source(destFileName))
-        .pipe(gulp.dest(destFolder))
-        .on('end', function() {
-            reload();
-        });
-}
-
+      .on('error', $.util.log.bind($.util, 'Browserify Error'))
+      .pipe(exorcist(mapFileName))
+      .pipe(source(destFileName))
+      .pipe(buffer())
+      .pipe(gulp.dest(destFolder));
+  }
+<%  }else{ %>
+  function rebundle() {
+      return bundler.bundle()
+          // log errors if they happen
+          .on('error', $.util.log.bind($.util, 'Browserify Error'))
+          .pipe(source(destFileName))
+          .pipe(gulp.dest(destFolder))
+          .on('end', function() {
+              reload();
+          });
+  }
+<%  } %>
 // Scripts
 gulp.task('scripts', rebundle);
-
+<% if(includeBabel) { %>
+gulp.task('buildScripts', () => bundle());
+<%  }else{ %>
 gulp.task('buildScripts', function() {
     return browserify(sourceFile)
         .bundle()
         .pipe(source(destFileName))
         .pipe(gulp.dest('dist/scripts'));
 });
-
+<%  } %>
 
 <% if (includeJade) { %>
 
@@ -162,7 +196,7 @@ gulp.task('buildBundle', ['styles', 'buildScripts', 'moveLibraries', 'bower'], f
 gulp.task('moveLibraries',['clean'], function(){
   // the base option sets the relative root for the set of files,
   // preserving the folder structure
-  gulp.src(['./app/scripts/**/*.js'], { base: './app/scripts/' })
+  gulp.src(['./app/scripts/**/*.js'<% if(includeBabel){ %> ,'./app/scripts/**/*.js.map' <% } %>], { base: './app/scripts/' })
   .pipe(gulp.dest('dist/scripts'));
 });
 
