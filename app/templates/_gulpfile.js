@@ -27,6 +27,7 @@ var source = require('vinyl-source-stream'),
   var exorcist = require('exorcist');
   var buffer = require('vinyl-buffer');
   var transform = require('vinyl-transform');
+  var mapFileName = '/app/scripts/app.js.map';
   <% } %>
 
 var browserSync = require('browser-sync');
@@ -81,7 +82,6 @@ var bundler = watchify(browserify({
 bundler.on('update', rebundle);
 bundler.on('log', $.util.log);
 <% if(includeBabel) { %>
-function rebundle() {
   function rebundle() {
       return bundler.bundle()
           // log errors if they happen
@@ -196,7 +196,8 @@ gulp.task('buildBundle', ['styles', 'buildScripts', 'moveLibraries', 'bower'], f
 gulp.task('moveLibraries',['clean'], function(){
   // the base option sets the relative root for the set of files,
   // preserving the folder structure
-  gulp.src(['./app/scripts/**/*.js'<% if(includeBabel){ %> ,'./app/scripts/**/*.js.map' <% } %>], { base: './app/scripts/' })
+  gulp.src(['./app/scripts/**/*.js'<% if(includeBabel){ %> ,'./app/scripts/**/*.js.map'
+  <% } %>], { base: './app/scripts/' })
   .pipe(gulp.dest('dist/scripts'));
 });
 
