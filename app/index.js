@@ -54,7 +54,7 @@ var ReactGulpBrowserifyGenerator = yeoman.generators.Base.extend({
                 value: 'includeModernizr',
                 checked: true
             }, {
-                name: 'HTML template - Jade',
+                name: 'HTML template - PugJS (Jade)',
                 value: 'includeJade',
                 checked: true
             }, {
@@ -140,9 +140,9 @@ var ReactGulpBrowserifyGenerator = yeoman.generators.Base.extend({
         if (this.includeJest) {
             this.copy('ui/__tests__/Timer-test.js', 'app/scripts/ui/__tests__/Timer-test.js');
         }
-        if (this.includeBabel){
-          this.copy('_babelrc', '.babelrc');
-        }
+        // if (this.includeBabel){
+        //   this.copy('_babelrc', '.babelrc');
+        // }
         this.copy('favicon.ico', 'app/favicon.ico');
         this.copy('bowerrc', '.bowerrc');
         this.copy('gitignore', '.gitignore');
