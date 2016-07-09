@@ -19,7 +19,7 @@ Bundled:
 * Bower
 * jQuery
 * Browserify
-* Reactify - Help to transform JSX (consider to use babelify later)
+* Babelify
 * Watchify support! (Sourcemap also!)
 * livereload (BrowserSync)
 
@@ -28,10 +28,9 @@ Optional:
 * Less
 * Bootstrap - Twitter Bootstrap's official Sass version
 * Modernizr
-* Jade for HTML templates (I think jade is no longer necessary if we create UI with JavaScript)
+* PugJS for HTML templates (formerly Jade)
 * CoffeeScript for JavaScript
 * Jest for unit tests
-* Babelify and source maps.
 
 ## Environment requirements
 
