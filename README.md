@@ -41,8 +41,8 @@ Optional:
 
 ```
 $ npm install -g yo                                # Install Yeoman (if you don't have it yet)...
-$ npm install -g generator-react-gulp-browserify   # ...then install this generator...
-$ yo react-gulp-browserify                         # ...and run it.
+$ npm install -g generator-react-gulp-browserify-less   # ...then install this generator...
+$ yo react-gulp-browserify-less                         # ...and run it.
 ```
 
 If you chose to use sass, you'll need to install it with `gem install sass`.
